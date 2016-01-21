@@ -5,4 +5,7 @@
     <item name="btn_record" type="id">false</item>
     <item name="btn_picture" type="id">false</item>
     <item name="img_picture" type="id">false</item>
+    <item name="chrono_record" type="id">false</item>
+    <item name="btn_stop_record" type="id">false</item>
+
 </resources>

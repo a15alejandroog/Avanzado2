@@ -1,29 +1,42 @@
 package com.example.a15alejandroog.ud_a2a_a15alejandroog;
 
+import android.app.DialogFragment;
+import android.media.MediaRecorder;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Chronometer;
 
-public class Record extends AppCompatActivity {
+public class Record extends DialogFragment {
+
+    private MediaRecorder mediaRecorder;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_record);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        final View rootView = inflater.inflate(R.layout.activity_record, container, false);
+        getDialog().setTitle(getTag());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        final Button BTN_STOP = (Button) rootView.findViewById(R.id.btn_stop_record);
+        final Chronometer CHRONO = (Chronometer) rootView.findViewById(R.id.chrono_record);
+
+        mediaRecorder = new MediaRecorder();
+
+        CHRONO.start();
+        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+
+        BTN_STOP.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                CHRONO.stop();
+                dismiss();
             }
         });
+
+
+        return rootView;
     }
+
 
 }

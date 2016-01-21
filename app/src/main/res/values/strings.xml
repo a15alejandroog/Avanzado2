@@ -3,4 +3,6 @@
     <string name="btn_play">REPRODUCIR</string>
     <string name="btn_record">GRAVAR</string>
     <string name="btn_picture">FOTO</string>
+    <string name="btn_stop_record">Parar</string>
+    <string name="title_activity_record">Gravando</string>
 </resources>
